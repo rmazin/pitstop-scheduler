@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PitStop Scheduler</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">P</span><span>PitStop <em>Scheduler</em></span></div>
+    <div class="topbar-meta"><span class="live-dot"></span> Boston Service Center <span class="separator">•</span> Mon–Sat 8am–6pm</div>
+  </header>
+  <main class="shell">
+    <section class="hero">
+      <div><p class="eyebrow">AUTO CARE, WITHOUT THE BACK-AND-FORTH</p><h1>Keep every bay moving.</h1><p class="hero-copy">A simple booking window for customers and a clear daily board for your shop team.</p></div>
+      <div class="hero-stat"><strong>4</strong><span>vehicles per day</span></div>
+    </section>
+    <nav class="tabs" aria-label="App views"><button class="tab active" data-view="booking">Book a drop-off</button><button class="tab" data-view="admin">Shop dashboard</button></nav>
+    <section id="booking-view" class="view active-view">
+      <div class="section-heading"><div><p class="eyebrow">CUSTOMER BOOKING</p><h2>Choose your drop-off hour</h2></div><div id="capacity-pill" class="pill">Loading availability…</div></div>
+      <div class="booking-layout">
+        <div class="panel calendar-panel"><div class="panel-title"><span>1. Select a day</span><span class="hint">Monday–Saturday</span></div><div class="calendar-controls"><button id="prev-week" class="icon-button" aria-label="Previous week">←</button><div id="week-label"></div><button id="next-week" class="icon-button" aria-label="Next week">→</button></div><div id="calendar-grid" class="calendar-grid"></div><div class="calendar-note"><span class="note-icon">i</span><span>Each hour blocks one vehicle bay. Four vehicles maximum each day.</span></div></div>
+        <div class="panel times-panel"><div class="panel-title"><span>2. Select a time</span><span class="hint">One-hour drop-off windows</span></div><div id="time-grid" class="time-grid"></div><div id="time-empty" class="empty-state hidden">Select a business day to see open hours.</div></div>
+      </div>
+      <div id="booking-form-wrap" class="panel form-panel hidden"><div class="panel-title"><span>3. Tell us about the vehicle</span><span class="hint">Required for your work order</span></div><div id="selected-summary" class="selected-summary"></div><form id="booking-form"><div class="form-section"><h3>Customer contact</h3><div class="form-grid"><label>Full name<input name="name" autocomplete="name" required /></label><label>Phone number<input name="phone" type="tel" autocomplete="tel" required /></label><label class="wide">Email address<input name="email" type="email" autocomplete="email" required /></label></div></div><div class="form-section"><h3>Vehicle details</h3><div class="form-grid"><label>VIN<input name="vin" minlength="11" required /></label><label>License plate<input name="licensePlate" required /></label><label>Year<input name="year" type="number" min="1900" max="2099" required /></label><label>Make<input name="make" required /></label><label>Model<input name="model" required /></label><label>Color<input name="color" required /></label></div></div><label class="check-row"><input type="checkbox" required /> I agree to receive appointment texts and email updates, including a reminder with a cancellation link.</label><button class="primary-button" type="submit">Confirm drop-off <span>→</span></button><p id="form-error" class="form-error"></p></form></div>
+      <div id="confirmation" class="panel confirmation hidden"></div>
+    </section>
+    <section id="admin-view" class="view">
+      <div class="section-heading"><div><p class="eyebrow">SHOP ADMIN</p><h2>Today’s service board</h2></div><button id="digest-button" class="secondary-button">Send 8am daily digest</button></div>
+      <div class="dashboard-cards"><div class="metric-card"><span>Today’s bookings</span><strong id="today-count">—</strong><small>of 4 daily spaces</small></div><div class="metric-card"><span>Open carryovers</span><strong id="carryover-count">—</strong><small>need attention</small></div><div class="metric-card"><span>Completed revenue</span><strong id="revenue-total">—</strong><small>tracked invoices</small></div><div class="metric-card"><span>Outstanding invoices</span><strong id="outstanding-count">—</strong><small>awaiting payment</small></div></div>
+      <div class="admin-layout"><div class="panel board-panel"><div class="panel-title"><span>Appointments</span><input id="admin-date" type="date" /></div><div id="admin-board"></div></div><div class="panel activity-panel"><div class="panel-title"><span>Notification activity</span><span class="hint">SMS + email log</span></div><div id="activity-list"></div></div></div>
+    </section>
+  </main>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "name": "pitstop-scheduler",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Auto shop scheduling app and admin dashboard",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  }
+}
